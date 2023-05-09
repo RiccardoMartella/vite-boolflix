@@ -1,21 +1,31 @@
 <script >
-    import NavBarComp from './components/NavBarComp.vue';
-    
+  import axios from 'axios';
+  import NavBarComp from './components/NavBarComp.vue';
+  import { store } from './store'
+
   export default{
     name: "AppVue",
     data() {
-        return {};
+        return {
+          store: store,
+        };
+    },
+    mounted: function() {
+      axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}`).then((response) => {
+        store.films = response.data.results;
+        console.log(store.films)
+      })
     },
     components: { 
       NavBarComp,
-     
-     }
+    }
 }
   
 </script>
 
 <template>
   <NavBarComp />
+  <div v-for="film in store.films">{{ film.original_title }}</div>
 </template>
 
 <style lang="scss">
