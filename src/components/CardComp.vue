@@ -8,11 +8,17 @@
         store: store,
       }
     },
+    props: {
+      singlefilm: Object
+    }
   }
 </script>
 
 <template>
-    <span>card</span>
+    <div>
+      <img v-bind:src="'https://image.tmdb.org/t/p/w300' + singlefilm.poster_path" alt="">
+      {{singlefilm.title }}
+    </div>
 </template>
 
 <style scoped lang="scss">
