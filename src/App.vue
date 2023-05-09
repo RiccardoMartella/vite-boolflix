@@ -11,7 +11,8 @@
         };
     },
     mounted: function() {
-      axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}`).then((response) => {
+      axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}`)
+      .then((response) => {
         store.films = response.data.results;
         console.log(store.films)
       })
@@ -25,7 +26,7 @@
 
 <template>
   <NavBarComp />
-  <div v-for="film in store.films">{{ film.original_title }}</div>
+ 
 </template>
 
 <style lang="scss">
