@@ -2,6 +2,7 @@
   import axios from 'axios';
   import NavBarComp from './components/NavBarComp.vue';
   import { store } from './store'
+  import SectionComp from './components/SectionComp.vue';
 
   export default{
     name: "AppVue",
@@ -10,25 +11,24 @@
           store: store,
         };
     },
-    mounted: function() {
-      axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}`)
-      .then((response) => {
-        store.films = response.data.results;
-        console.log(store.films)
-      })
-    },
     components: { 
       NavBarComp,
+      SectionComp,
     }
 }
   
 </script>
 
 <template>
-  <NavBarComp />
- 
+  <div class="contenitore-sfondo">
+    <NavBarComp />
+    <SectionComp />
+  </div>
 </template>
 
-<style lang="scss">
+<style  lang="scss">
   @use './style/main.scss';
+  .contenitore-sfondo{
+    min-height: 100vh;
+  }
 </style>
