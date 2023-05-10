@@ -6,11 +6,20 @@ export default {
   data() {
     return {
       store: store,
+      cerca: "",
     }
   },
   mounted: function () { },
   methods: {
+    filtra() {
+      store.filmsFiltered = store.films.filter((film) => {
+        return film.title.toLowerCase().includes(this.cerca.toLowerCase())
+      })
 
+      store.seriesFiltered = store.series.filter((film) => {
+        return film.original_name.toLowerCase().includes(this.cerca.toLowerCase())
+      })
+    }
   }
 }
 </script>
@@ -21,8 +30,8 @@ export default {
       <h1>NETFLIX</h1>
     </div>
     <div class="d-flex align-items-center">
-      <input class="p-1" type="text" placeholder="cerca">
-      <button class=" p-1 ps-2 ms-2">INVIO</button>
+      <input class="p-1" type="text" placeholder="cerca" v-model="cerca">
+      <button @click="filtra()" class=" p-1 ps-2 ms-2">Inizia Ricerca</button>
     </div>
   </div>
 </template>

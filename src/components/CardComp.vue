@@ -11,7 +11,8 @@ export default {
     }
   },
   props: {
-    singlefilm: Object
+    singlefilm: Object,
+    filmNameKey: String
   }
 }
 </script>
@@ -19,7 +20,7 @@ export default {
 <template>
   <div class="contenitore-film">
     <img v-bind:src="'https://image.tmdb.org/t/p/w300' + singlefilm.poster_path" alt="">
-    <h5>{{ singlefilm.title }}</h5>
+    <h5>{{ singlefilm[filmNameKey] }}</h5>
   </div>
 </template>
 

@@ -11,7 +11,7 @@ export default {
 </script>
 
 <template>
-  <FilmListComp :url="'https://api.themoviedb.org/3/movie/popular'" :storeKey="'films'" />
+  <FilmListComp :url="'https://api.themoviedb.org/3/movie/popular'" :storeKey="'films'" :filmNameKey="'title'" />
 </template>
 
 <style scoped lang="scss"></style>
