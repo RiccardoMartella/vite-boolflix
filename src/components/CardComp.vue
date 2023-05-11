@@ -8,6 +8,7 @@ export default {
   data() {
     return {
       store: store,
+      i: "FR",
     }
   },
   props: {
@@ -21,7 +22,19 @@ export default {
     getVote() {
       return Math.ceil(this.singleFilm[this.voteKey] / 2)
     },
-  }
+    uppercaseText() {
+      switch (this.singleFilm[this.languageKey]) {
+        case 'en':
+          return 'GB';
+        case 'ja':
+          return 'JP';
+        case 'ko':
+          return 'KP';
+        default:
+          return this.singleFilm[this.languageKey].toUpperCase()
+      }
+    }
+  },
 }
 </script>
 
@@ -38,6 +51,7 @@ export default {
           style=" color: #ffffff;"></i>
       </div>
       <h4>Lingua : {{ singleFilm[languageKey] }}</h4>
+      <img v-bind:src="`https://flagsapi.com/${uppercaseText()}/flat/64.png`" alt="">
     </div>
   </div>
 </template>
