@@ -11,24 +11,33 @@ export default {
     }
   },
   props: {
-    singlefilm: Object,
+    singleFilm: Object,
     filmNameKey: String,
     filmOriginalNameKey: String,
-    votekey: Number,
+    voteKey: String,
     languageKey: String,
+  },
+  methods: {
+    getVote() {
+      return Math.ceil(this.singleFilm[this.voteKey] / 2)
+    },
   }
 }
 </script>
 
 <template>
   <div class="contenitore-film">
-    <img v-bind:src="'https://image.tmdb.org/t/p/w300' + singlefilm.poster_path" alt="">
-    <h5>{{ singlefilm[filmNameKey] }}</h5>
+    <img v-bind:src="'https://image.tmdb.org/t/p/w300' + singleFilm.poster_path" alt="">
+    <h5>{{ singleFilm[filmNameKey] }}</h5>
     <div class="info">
-      <h4>Titolo: {{ singlefilm[filmNameKey] }}</h4>
-      <h4>Titolo Originale: {{ singlefilm[filmOriginalNameKey] }}</h4>
-      <h4>Voto :{{ singlefilm[votekey] }}</h4>
-      <h4>Lingua : {{ singlefilm[languageKey] }}</h4>
+      <h4>Titolo: {{ singleFilm[filmNameKey] }}</h4>
+      <h4>Titolo Originale: {{ singleFilm[filmOriginalNameKey] }}</h4>
+      <div class="d-flex align-items-center">
+        <h4>Voto: {{ getVote() }}</h4>
+        <i v-for="e in  5 " class="fa-star" :class="(e <= getVote()) ? 'fa-solid ' : 'fa-regular'"
+          style=" color: #ffffff;"></i>
+      </div>
+      <h4>Lingua : {{ singleFilm[languageKey] }}</h4>
     </div>
   </div>
 </template>
@@ -69,6 +78,11 @@ export default {
       h4 {
         color: white;
         margin: 10px 0 20px 0;
+      }
+
+      i {
+        padding-left: 8px;
+        margin-bottom: 7px;
       }
     }
   }

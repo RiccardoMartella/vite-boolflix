@@ -15,9 +15,8 @@ export default {
         storeKey: String,
         filmNameKey: String,
         filmOriginalNameKey: String,
-        votekey: Number,
+        voteKey: String,
         languageKey: String,
-
     },
     mounted: function () {
         axios.get(`${this.url}?api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}`)
@@ -35,8 +34,8 @@ export default {
 
 <template>
     <div class="d-flex flex-wrap p-4">
-        <CardComp :singlefilm="film" v-for="film in store[`${this.storeKey}Filtered`]" :filmNameKey="this.filmNameKey"
-            :filmOriginalNameKey="this.filmOriginalNameKey" :votekey="this.votekey" :languageKey="this.languageKey"
+        <CardComp :singleFilm="film" v-for="film in store[`${this.storeKey}Filtered`]" :filmNameKey="this.filmNameKey"
+            :filmOriginalNameKey="this.filmOriginalNameKey" :voteKey="this.voteKey" :languageKey="this.languageKey"
             :key="film.id" />
     </div>
 </template>
