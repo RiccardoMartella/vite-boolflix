@@ -47,4 +47,8 @@ export default {
     text-shadow: 4px 4px 1px rgb(5, 5, 5);
   }
 }
+
+button:hover {
+  color: red;
+}
 </style>

@@ -11,7 +11,9 @@ export default {
 </script>
 
 <template>
-  <FilmListComp :url="'https://api.themoviedb.org/3/tv/top_rated'" :storeKey="'series'" :filmNameKey="'original_name'" />
+  <FilmListComp :url="'https://api.themoviedb.org/3/tv/top_rated'" :storeKey="'series'" :filmNameKey="'name'"
+    :filmOriginalNameKey="'original_name'" :votekey="'vote_average'" :languageKey="'original_language'" />
 </template>
 
-<style scoped lang="scss"></style>
+<style  scoped lang =" scss">
+    </style>
