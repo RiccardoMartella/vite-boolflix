@@ -1,6 +1,6 @@
 <script>
 import { store } from '../store'
-import CardComp from './Cardcomp.vue';
+import CardComp from './CardComp.vue';
 import axios from 'axios';
 
 export default {
